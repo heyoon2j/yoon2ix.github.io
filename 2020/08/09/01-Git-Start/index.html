@@ -5,18 +5,23 @@
   
 
   
-  <title>Yoon2ixStory</title>
+  <title>01. Git Start | Yoon2ixStory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yoon Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yoon2ixStory">
-<meta property="og:url" content="https://yoon2ix.github.io/index.html">
+  <meta name="description" content="Git StartGit Structure.git 구조script123456789$ git init$ ls .gitHEADconfigdescription&#x2F;branches&#x2F;hooks&#x2F;objects&#x2F;refs  Objects BLOB(Binary Large OBject) 소스 파일, 이미지 파일 등 데이터를 파일 명 같은 메타데이터 없이, 바이너리 데이터 자체만">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01. Git Start">
+<meta property="og:url" content="https://yoon2ix.github.io/2020/08/09/01-Git-Start/index.html">
 <meta property="og:site_name" content="Yoon2ixStory">
-<meta property="og:description" content="Yoon Blog">
+<meta property="og:description" content="Git StartGit Structure.git 구조script123456789$ git init$ ls .gitHEADconfigdescription&#x2F;branches&#x2F;hooks&#x2F;objects&#x2F;refs  Objects BLOB(Binary Large OBject) 소스 파일, 이미지 파일 등 데이터를 파일 명 같은 메타데이터 없이, 바이너리 데이터 자체만">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/yoon2ix/Yoon-TIL/blob/master/Git/img/gitDataTransport.png">
+<meta property="article:published_time" content="2020-08-08T16:28:25.000Z">
+<meta property="article:modified_time" content="2020-08-08T16:42:19.873Z">
 <meta property="article:author" content="YoonSeok Jeong">
-<meta property="article:tag" content="Backend, Web, Develop">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yoon2ix/Yoon-TIL/blob/master/Git/img/gitDataTransport.png">
   
     <link rel="alternate" href="/atom.xml" title="Yoon2ixStory" type="application/atom+xml">
   
@@ -65,102 +70,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-02-Make-github-io-Using-hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/09/02-Make-github-io-Using-hexo/" class="article-date">
-  <time datetime="2020-08-08T16:43:18.000Z" itemprop="datePublished">2020-08-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/09/02-Make-github-io-Using-hexo/">02. Make github.io Using hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="github-io"><a href="#github-io" class="headerlink" title="github.io"></a>github.io</h1><ul>
-<li>github 저장소를 활용해 정적인 사이트 호스팅이 가능</li>
-<li>Site Address: {user}.github.io</li>
-</ul>
-<h2 id="Static-Site-Generator"><a href="#Static-Site-Generator" class="headerlink" title="Static Site Generator"></a>Static Site Generator</h2><ul>
-<li><strong>Hugo</strong>: Golang 기반 정적인 블로그 생성기</li>
-<li><strong>Hexo</strong>: Node.js 기반 정적인 블로그 생성기</li>
-</ul>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="Requirements-Hexo"><a href="#Requirements-Hexo" class="headerlink" title="Requirements Hexo"></a>Requirements Hexo</h3><ul>
-<li>Git Install</li>
-<li>Node.js Install(<a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a>)<blockquote>
-<p>Minimum Node.js version: 10.13.0 (2020.08.09)</p>
-</blockquote>
-</li>
-<li><code> $ npm istall -g hexo-cli</code> : hexo 설치</li>
-</ul>
-<h3 id="Init-hexo"><a href="#Init-hexo" class="headerlink" title="Init hexo"></a>Init hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install   &#x2F;&#x2F; package.json을 확인하여 필요한 패키지 설치</span><br><span class="line">$ npm install hexo-deployer-git --save  &#x2F;&#x2F; 자동 배포를 위해</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>hexo folder</p>
-<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
-<p><strong>_config.yml</strong> : Site configuration file<br><strong>package.json</strong> : Application Data(Version, Dependency etc.)<br><strong>themes</strong> : Theme folder<br><strong>source</strong> : Source folder, site’s content.</p>
-<h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><ul>
-<li><strong>_config.yml</strong></li>
-</ul>
-<ol>
-<li><p><strong># Site</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span>          <span class="comment">## Site Tile</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span>    <span class="comment">## Site Subtitle</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;&#x27;</span> <span class="comment">## Site Description</span></span><br><span class="line"><span class="attr">keywords:</span>       <span class="comment">## Site Keywords ex&gt;</span></span><br><span class="line"><span class="attr">author:</span>         <span class="comment">## Name</span></span><br><span class="line"><span class="attr">language:</span>       <span class="comment">## Site Language ex&gt; en</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;&#x27;</span>    <span class="comment">## Site Timezone ex&gt; America/New_York, Asia/Seoul</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong># URL</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="attr">url:</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>github.io와 연동하기 위해서는 URL에 해당하는 주소 작성</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<ol start="3">
-<li><p><strong># Writing</strong></p>
- <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">new_post_name:</span> <span class="string">:title.md</span> <span class="comment"># File name of new posts</span></span><br><span class="line"><span class="attr">default_layout:</span> <span class="string">post</span></span><br><span class="line"><span class="attr">titlecase:</span> <span class="literal">false</span> <span class="comment"># Transform title into titlecase</span></span><br><span class="line"><span class="attr">external_link:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">site</span> <span class="comment"># Apply to the whole site</span></span><br><span class="line">  <span class="attr">exclude:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">filename_case:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>new post 명령시 생성되는 파일의 이름은 Placeholder를 이용해 커스터마이징할 수 있다. ex&gt; :year:month:day-:title.md</li>
-</ul>
-</li>
-<li><p><strong># Deployment</strong></p>
- <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span></span><br><span class="line">  <span class="attr">repo:</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>git과 연동하기 위해서는 type: git / repo: github.io repository 주소</li>
-</ul>
-</li>
-</ol>
-<h3 id="Write-amp-Deploy"><a href="#Write-amp-Deploy" class="headerlink" title="Write &amp; Deploy"></a>Write &amp; Deploy</h3><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo new &#123;layout&#125; &#123;file name&#125;     // layout에 해당하는 파일 생성</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo clean &amp;&amp; hexo generate       // generate 명령시, html 파일로 변환되어, <span class="string">&#x27;public/&#x27;</span> 폴더로 이동</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo clean &amp;&amp; hexo deploy         // 배포</span></span><br></pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/09/02-Make-github-io-Using-hexo/" data-id="ckdlw4ibe0001a4i8enaecvx1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-01-Git-Start" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-01-Git-Start" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/09/01-Git-Start/" class="article-date">
   <time datetime="2020-08-08T16:28:25.000Z" itemprop="datePublished">2020-08-09</time>
@@ -173,8 +83,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/09/01-Git-Start/">01. Git Start</a>
+    <h1 class="article-title" itemprop="name">
+      01. Git Start
     </h1>
   
 
@@ -304,101 +214,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-MY-new-hexo-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/MY-new-hexo-post/" class="article-date">
-  <time datetime="2020-08-07T07:20:51.000Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2020/08/09/02-Make-github-io-Using-hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/MY-new-hexo-post/">MY new hexo post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Let me introduce myself!!</p>
-<ul>
-<li>Name: YoonSeok Jeong</li>
-<li>Hobby: Dance, Game:</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/07/MY-new-hexo-post/" data-id="ckdlw4ibp0003a4i8f1ef6fwa" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/hello-world/" class="article-date">
-  <time datetime="2020-08-07T07:11:12.372Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          02. Make github.io Using hexo
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/hello-world/">Hello World</a>
-    </h1>
   
+    <a href="/2020/08/07/MY-new-hexo-post/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MY new hexo post</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/07/hello-world/" data-id="ckdlw4ich000ba4i8f87u1y8f" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
