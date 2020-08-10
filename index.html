@@ -67,6 +67,73 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java-Basic-Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/11/Java-Basic-Polymorphism/" class="article-date">
+  <time datetime="2020-08-10T15:44:56.000Z" itemprop="datePublished">2020-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/11/Java-Basic-Polymorphism/">Java Basic - Polymorphism</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="다형성-Polymorphism"><a href="#다형성-Polymorphism" class="headerlink" title="다형성 (Polymorphism)"></a>다형성 (Polymorphism)</h1><ul>
+<li>오버로딩에 의한 다형성</li>
+<li>오버라이딩에 의한 다형성<ul>
+<li>상속에 의한 다형성</li>
+</ul>
+</li>
+</ul>
+<h2 id="다형성-특징"><a href="#다형성-특징" class="headerlink" title="다형성 특징"></a>다형성 특징</h2><ul>
+<li><p>부모 클래스 타입으로 자식 클래스 타입의 객체를 참조하는 특징</p>
+<ul>
+<li>부모 클래스 타입으로 자식 클래스(메소드, 멤버 변수)에 접근할 수 없다.</li>
+<li>자식 클래스로 부모 클래스를 참조하려 하면 오류 발생<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Polymorphism</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar();    <span class="comment">// 자식 객체를 생성</span></span><br><span class="line">        Foo foo = (Foo)bar;     <span class="comment">// 부모 클래스 타입으로 자식 객체를 받음</span></span><br><span class="line"></span><br><span class="line">        foo.methodA();</span><br><span class="line">        <span class="comment">// foo.methodB();   // 자식 클래스 메소드는 사용 불가능</span></span><br><span class="line"></span><br><span class="line">        Foo foo1 = <span class="keyword">new</span> Foo();</span><br><span class="line">        <span class="comment">// Bar bar1 = (Bar)foo1;   // 자식 클래스 타입으로 부모 객체를 받음</span></span><br><span class="line">        <span class="comment">// 문법 오류는 아니지만, 런타임 오류가 발생</span></span><br><span class="line">        <span class="comment">// bar1.methodA();     // 문법 오류 x</span></span><br><span class="line">        <span class="comment">// bar1.methodB();     // 문법 오류 x</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 힙 영역에는 계속 자식 객체가 있었던 것</span></span><br><span class="line">        Bar bar1 = (Bar)foo;    <span class="comment">// 자식 클래스 타입으로 자식 객체를 받음</span></span><br><span class="line">        bar1.methodA();</span><br><span class="line">        bar1.methodB();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>맴버 변수의 재정의는 선언된 객체의 타입을 따른다(문법적으로 본다)</p>
+</li>
+<li><p>메소드 오버라이딩은 메모리상의 객체 타입을 따른다(실체 객체를 본다)</p>
+<ul>
+<li>가상 메소드 호출: Virtual method call<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String x = <span class="string">&quot;Super&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Super method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span>  <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String x = <span class="string">&quot;Sub&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Sub method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">poly02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line">        Foo foo = (Foo) bar;</span><br><span class="line"></span><br><span class="line">        System.out.println(bar.x);  <span class="comment">//Sub</span></span><br><span class="line">        bar.methodA();  <span class="comment">// Sub Method</span></span><br><span class="line"></span><br><span class="line">        System.out.println(foo.x);  <span class="comment">// Super</span></span><br><span class="line">        foo.methodA();  <span class="comment">// Sub Method, Virtual Method Call</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>공변 반환 타입(Covariant return type)</p>
+<ul>
+<li>자기 자신을 반환하는 경우, 오버라이딩도 리턴 타입을 바꿀 수 있다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Foo <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span>  <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bar <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  <span class="comment">// 오버라이딩이지만, 리턴 타입이 달라질 수 있다.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yoon2ix.github.io/2020/08/11/Java-Basic-Polymorphism/" data-id="ckdoow1vk00039ci8a4rn2v35" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/basic/" rel="tag">basic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/polymorphism/" rel="tag">polymorphism</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-02-Make-github-io-Using-hexo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/09/02-Make-github-io-Using-hexo/" class="article-date">
@@ -148,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/09/02-Make-github-io-Using-hexo/" data-id="ckdlw4ibe0001a4i8enaecvx1" class="article-share-link">Share</a>
+      <a data-url="https://yoon2ix.github.io/2020/08/09/02-Make-github-io-Using-hexo/" data-id="ckdoow1v400019ci83wo8f47v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
@@ -296,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/09/01-Git-Start/" data-id="ckdlw4iaw0000a4i8c4v7damy" class="article-share-link">Share</a>
+      <a data-url="https://yoon2ix.github.io/2020/08/09/01-Git-Start/" data-id="ckdoow1u900009ci8bnkw4y9l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
@@ -339,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/07/MY-new-hexo-post/" data-id="ckdlw4ibp0003a4i8f1ef6fwa" class="article-share-link">Share</a>
+      <a data-url="https://yoon2ix.github.io/2020/08/07/MY-new-hexo-post/" data-id="ckdoow214000i9ci85lmfhw3a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -388,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/07/hello-world/" data-id="ckdlw4ich000ba4i8f87u1y8f" class="article-share-link">Share</a>
+      <a data-url="https://yoon2ix.github.io/2020/08/07/hello-world/" data-id="ckdoow1vq00049ci8fkxof2yv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -411,7 +478,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/" rel="tag">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/polymorphism/" rel="tag">polymorphism</a></li></ul>
     </div>
   </div>
 
@@ -421,7 +488,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/polymorphism/" style="font-size: 10px;">polymorphism</a>
     </div>
   </div>
 
@@ -441,6 +508,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/08/11/Java-Basic-Polymorphism/">Java Basic - Polymorphism</a>
+          </li>
         
           <li>
             <a href="/2020/08/09/02-Make-github-io-Using-hexo/">02. Make github.io Using hexo</a>
