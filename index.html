@@ -67,6 +67,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java-Basic-Interface" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/11/Java-Basic-Interface/" class="article-date">
+  <time datetime="2020-08-11T10:53:11.000Z" itemprop="datePublished">2020-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/11/Java-Basic-Interface/">Java Basic - Interface</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="인터페이스-Interface"><a href="#인터페이스-Interface" class="headerlink" title="인터페이스 (Interface)"></a>인터페이스 (Interface)</h1><ul>
+<li>클래스가 사용되는 방식 / 접점만을 선언하는 클래스의 유사한 틀</li>
+<li>아무런 구현이 되어 있지 않으며, 모든 메소드가 추상 메소드이다.</li>
+</ul>
+<h2 id="인터페이스-특징"><a href="#인터페이스-특징" class="headerlink" title="인터페이스 특징"></a>인터페이스 특징</h2><ul>
+<li><code>class</code>가 아니고 <code>interface</code> 키워드 사용</li>
+<li>맴버 변수는 항상 <code>public static final</code> 이다(생략 가능)</li>
+<li>맴버 메소드는 항상 <code>public abstract</code> 이다(생략 가능)</li>
+<li>클래스는 하나만 상속할 수 있으나, 인터페이스는 여러 개 상속 가능</li>
+</ul>
+<h3 id="인터페이스-변수명-작성법"><a href="#인터페이스-변수명-작성법" class="headerlink" title="인터페이스 변수명 작성법"></a>인터페이스 변수명 작성법</h3><ul>
+<li><strong>interface IFoo &lt;- class Foo</strong> : 한 마디로 표현하기 힘든 경우, I를 맨 앞에 붙여준다.</li>
+<li><strong>interface Printable &lt;- class Bar</strong> : 형용사 형태로 표현, Runnable 등</li>
+</ul>
+<h2 id="인터페이스-상속"><a href="#인터페이스-상속" class="headerlink" title="인터페이스 상속"></a>인터페이스 상속</h2><ul>
+<li>인터페이스로 인터페이스를 상속할 경우, <code>extends</code></li>
+<li>클래스 &lt;- 클래스 상속과 다르게 다중 상속 가능<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Walkable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">walk</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span>  <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span>  <span class="title">Jumpalbe</span> <span class="keyword">extends</span> <span class="title">Walkable</span>, <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">jump</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="JDK-1-8-이후"><a href="#JDK-1-8-이후" class="headerlink" title="JDK 1.8 이후"></a>JDK 1.8 이후</h2><h3 id="Default-Method"><a href="#Default-Method" class="headerlink" title="Default Method"></a>Default Method</h3><ul>
+<li>항상 public 이다.</li>
+<li>인터페이스 철학화 맞지 않다.</li>
+<li>기존에 사용하던 인터페이스가 개선되어, 모든 자식 메소드에 동일하게 구현되어야 하는 메소드가 생긴 경우에 쉽게 기능을 추가하기 위해 만들어짐</li>
+<li>부모와 인터페이스 모두에 같은 이름의 메소드가 있는 경우, 상속 시 부모 클래스의 메소드를 실행한다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IFooTwo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">defaultMethod</span><span class="params">()</span></span>&#123;   <span class="comment">// 디폴트 메소드, 상속 받는 클래스에서 Overriding 할 수 있다.</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Default Method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Static-Method"><a href="#Static-Method" class="headerlink" title="Static Method"></a>Static Method</h3></li>
+<li>인터페이스 이름으로 호출 가능</li>
+<li>클래스 구현체의 이름으로도 호출 불가능<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IBar</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Static Method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">implements</span> <span class="title">IBar</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Interface</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        IBar.staticMethod();    <span class="comment">// 인터페이스 명으로 클래스 메소드 호출 가능</span></span><br><span class="line">        <span class="comment">// Bar.staticMethod(); // 구현체인 자식 클래스로는 클래스 메소드 호출 불가능</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yoon2ix.github.io/2020/08/11/Java-Basic-Interface/" data-id="ckdptvrrg00048oi823aug9b8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/basic/" rel="tag">basic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interface/" rel="tag">interface</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java-Basic-Abstract-Class" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/11/Java-Basic-Abstract-Class/" class="article-date">
@@ -105,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/11/Java-Basic-Abstract-Class/" data-id="ckdopga9m0004agi81l9vc3cm" class="article-share-link">Share</a>
+      <a data-url="https://yoon2ix.github.io/2020/08/11/Java-Basic-Abstract-Class/" data-id="ckdptvrrd00038oi833349ttn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/abstract/" rel="tag">abstract</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/basic/" rel="tag">basic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
@@ -172,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/11/Java-Basic-Polymorphism/" data-id="ckdopga9h0003agi8g9pv9nft" class="article-share-link">Share</a>
+      <a data-url="https://yoon2ix.github.io/2020/08/11/Java-Basic-Polymorphism/" data-id="ckdptvrri00058oi83s5nfrxk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/basic/" rel="tag">basic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/polymorphism/" rel="tag">polymorphism</a></li></ul>
@@ -265,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/09/02-Make-github-io-Using-hexo/" data-id="ckdopga930001agi83hkahehk" class="article-share-link">Share</a>
+      <a data-url="https://yoon2ix.github.io/2020/08/09/02-Make-github-io-Using-hexo/" data-id="ckdptvrr700018oi80xdba4fj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
@@ -413,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/09/01-Git-Start/" data-id="ckdopga8i0000agi89clhg7hi" class="article-share-link">Share</a>
+      <a data-url="https://yoon2ix.github.io/2020/08/09/01-Git-Start/" data-id="ckdptvrqx00008oi8gobtejq6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
@@ -456,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/07/MY-new-hexo-post/" data-id="ckdopga9y0007agi81rtz9gl2" class="article-share-link">Share</a>
+      <a data-url="https://yoon2ix.github.io/2020/08/07/MY-new-hexo-post/" data-id="ckdptvrrl00078oi8hk6ffe2b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -505,7 +573,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://yoon2ix.github.io/2020/08/07/hello-world/" data-id="ckdopga9r0005agi8a5yshtu9" class="article-share-link">Share</a>
+      <a data-url="https://yoon2ix.github.io/2020/08/07/hello-world/" data-id="ckdptvrsh000y8oi88m2gf2xe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -528,7 +596,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/abstract/" rel="tag">abstract</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/" rel="tag">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/polymorphism/" rel="tag">polymorphism</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/abstract/" rel="tag">abstract</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/" rel="tag">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interface/" rel="tag">interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/polymorphism/" rel="tag">polymorphism</a></li></ul>
     </div>
   </div>
 
@@ -538,7 +606,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/abstract/" style="font-size: 10px;">abstract</a> <a href="/tags/basic/" style="font-size: 20px;">basic</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/polymorphism/" style="font-size: 10px;">polymorphism</a>
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/abstract/" style="font-size: 10px;">abstract</a> <a href="/tags/basic/" style="font-size: 20px;">basic</a> <a href="/tags/class/" style="font-size: 10px;">class</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/interface/" style="font-size: 10px;">interface</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/polymorphism/" style="font-size: 10px;">polymorphism</a>
     </div>
   </div>
 
@@ -560,6 +628,10 @@
       <ul>
         
           <li>
+            <a href="/2020/08/11/Java-Basic-Interface/">Java Basic - Interface</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/11/Java-Basic-Abstract-Class/">Java Basic - Abstract Class</a>
           </li>
         
@@ -573,10 +645,6 @@
         
           <li>
             <a href="/2020/08/09/01-Git-Start/">01. Git Start</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/07/MY-new-hexo-post/">MY new hexo post</a>
           </li>
         
       </ul>
