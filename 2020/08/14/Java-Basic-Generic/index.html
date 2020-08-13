@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Java Basic - Generic | Yoon2ixStory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="제네릭 (Generic) 대상 객체의 타입을 입력 받아서 사용하는 형식 미리 사용할 수 있는 타입을 명시해서 컴파일 타임에 차크 가능 입력을 Object로 할 수 있으나, 런타임에 Instanceof로 객체를 체크해야 함 제네릭을 사용할 경우 이러한 과정 없이 간견하게 코드 작성을 할 수 있다. ex) Object를 어떤 값으로 Casting 해야될지는 런">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Basic - Generic">
+<meta property="og:url" content="https://yoon2ix.github.io/2020/08/14/Java-Basic-Generic/index.html">
+<meta property="og:site_name" content="Yoon2ixStory">
+<meta property="og:description" content="제네릭 (Generic) 대상 객체의 타입을 입력 받아서 사용하는 형식 미리 사용할 수 있는 타입을 명시해서 컴파일 타임에 차크 가능 입력을 Object로 할 수 있으나, 런타임에 Instanceof로 객체를 체크해야 함 제네릭을 사용할 경우 이러한 과정 없이 간견하게 코드 작성을 할 수 있다. ex) Object를 어떤 값으로 Casting 해야될지는 런">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-13T16:23:10.000Z">
+<meta property="article:modified_time" content="2020-08-13T16:23:55.312Z">
+<meta property="article:author" content="YoonSeok Jeong">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="basic">
+<meta property="article:tag" content="generic">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Yoon2ixStory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yoon2ixStory</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yoon2ix.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java-Basic-Generic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/14/Java-Basic-Generic/" class="article-date">
+  <time datetime="2020-08-13T16:23:10.000Z" itemprop="datePublished">2020-08-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java Basic - Generic
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="제네릭-Generic"><a href="#제네릭-Generic" class="headerlink" title="제네릭 (Generic)"></a>제네릭 (Generic)</h1><ul>
+<li>대상 객체의 타입을 입력 받아서 사용하는 형식</li>
+<li>미리 사용할 수 있는 타입을 명시해서 <strong>컴파일 타임</strong>에 차크 가능<ul>
+<li>입력을 Object로 할 수 있으나, 런타임에 Instanceof로 객체를 체크해야 함</li>
+<li>제네릭을 사용할 경우 이러한 과정 없이 간견하게 코드 작성을 할 수 있다.<blockquote>
+<p>ex) Object를 어떤 값으로 Casting 해야될지는 런타임에 입력 값에 의해 결정되는 경우, 입력을 어떤 식으로 할지 모르기 때문에 비효율적 코드를 작성하게 된다.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="제네릭-클래스-Generic-Class"><a href="#제네릭-클래스-Generic-Class" class="headerlink" title="제네릭 클래스 (Generic Class)"></a>제네릭 클래스 (Generic Class)</h2><ul>
+<li><p>클래스 선언 시, 설정되지 않은 타입을 타입 파라미터로 표현</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericFoo</span>&lt;<span class="title">T</span>&gt; </span>&#123;   <span class="comment">// T: 타입 파라미터</span></span><br><span class="line">    String name;</span><br><span class="line">    T memberVar;</span><br><span class="line"></span><br><span class="line">    GenericFoo(String name, T memberVar)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.memberVar = memberVar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>제네릭 인터페이스도 제네릭 클래스와 동일하게 표현</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">GenericInterface</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">      ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>여러 개의 타입 파라미터를 사용할 수 있다.</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">      ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>제네릭 클래스와 static 관계</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericBar</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// static T classVar;             // not possible, 클래스 영역이기 때문에, 객체 생성 이전에 메모리에 상주해야 되므로</span></span><br><span class="line">    <span class="comment">// static void method(T var)&#123; &#125;   // not possible, T가 객체를 생성해야 정해지므로, 호출이 불가능하다</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// T memberVar = new T();   // not possible</span></span><br><span class="line">    <span class="comment">// 안정성 문제 때문에(T가 어떤 것이 올지 모름) 위험하다.</span></span><br><span class="line">    <span class="comment">// new 연산자의 경우, 컴파일 단계에서 타입을 이용해서 Heap 영역에 충분한 공간이 있는지 확인을 하게 되늗데</span></span><br><span class="line">    <span class="comment">// 여기서는 그렇게 하지 못하기 때문에 에러가 발생한다.</span></span><br><span class="line">    <span class="comment">// Reference: https://yaboong.github.io/java/2019/01/19/java-generics-1/</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Object obj = new Object();</span></span><br><span class="line"><span class="comment">        if(obj instanceof T)&#123;   // not Possible, T가 될 수 있는 값이 너무 많기 때문에</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="제네릭-상속-Generic-Inheritance"><a href="#제네릭-상속-Generic-Inheritance" class="headerlink" title="제네릭 상속 (Generic Inheritance)"></a>제네릭 상속 (Generic Inheritance)</h2></li>
+<li>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">      ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IGFoo</span>&lt;<span class="title">D</span>&gt;</span>&#123;</span><br><span class="line">      ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 추가적인 타입 파라미터도 사용할 수 있다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GIGFoo</span>&lt;<span class="title">N</span>, <span class="title">T</span>, <span class="title">D</span>&gt; <span class="keyword">extends</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">IGFoo</span>&lt;<span class="title">D</span>&gt;</span>&#123;</span><br><span class="line">      ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 부모 클래스, 인터페이스들에 동일한 타입 파라미터를 넘겨줄 수 있다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IGIFooTwo</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">IGFoo</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">      ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="제네릭-메소드-Generic-Method"><a href="#제네릭-메소드-Generic-Method" class="headerlink" title="제네릭 메소드 (Generic Method)"></a>제네릭 메소드 (Generic Method)</h2><ul>
+<li>메소드 앞에 타입 파라미터를 써준다.</li>
+<li>제네릭 클래스와 다르게 static generic method가 가능한 이유는 함수 호출 시에는 타입이 결정 되기 때문이다.  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericMethod</span>&lt;<span class="title">P</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">staticMethod</span><span class="params">(T t)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">method</span><span class="params">(T x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="타입-제한"><a href="#타입-제한" class="headerlink" title="타입 제한"></a>타입 제한</h2><ul>
+<li><p><strong>extends</strong> 키워드를 사용하여 부모 클래스를(상한) 제한</p>
+</li>
+<li><p><strong>&amp;</strong> 를 이용하여 동시 제약을 할 수 있다.</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 타입 제한을 하지 않으면 extends Object와 동일하다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericNoTypeLimit</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Object</span>&gt;</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 제한한 클래스의 상위 클래스를 사용할 수 없다. Number와 하위 클래스</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericTypeLimitation</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span> &amp; <span class="title">Cloneable</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>와일드 카드</p>
+<ul>
+<li><strong>&lt;?&gt; == &lt;? extends Object&gt;</strong> 서로 동일</li>
+<li><strong>&lt;? extends T&gt;</strong> : 와일드 카드의 상한을 제한</li>
+<li><strong>&lt;? super T&gt;</strong> : 와일드 카드의 하한을 제한<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildFoo</span> </span>&#123;</span><br><span class="line">      ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildBar</span> <span class="keyword">extends</span> <span class="title">WildFoo</span></span>&#123;</span><br><span class="line">      ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildGeneric</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildCar</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> &lt;T extends Object&gt; <span class="function"><span class="keyword">void</span> <span class="title">method1_2</span><span class="params">(WildGeneric&lt;T&gt; x)</span> </span>&#123;&#125;   <span class="comment">// T와 ? 차이는 super 쓰냐 못 쓰냐이다.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">(WildGeneric&lt;?&gt; x)</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1_eq</span><span class="params">(WildGeneric&lt;? extends Object&gt; x)</span> </span>&#123;&#125;      <span class="comment">// Object가 상한 -&gt; 모든 객체</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">(WildGeneric&lt;? extends WildFoo&gt; x)</span> </span>&#123;&#125;        <span class="comment">// WildFoo, WildBar</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method3</span><span class="params">(WildGeneric&lt;? <span class="keyword">super</span> WildBar&gt; x)</span> </span>&#123;&#125;          <span class="comment">// Object, WildFoo, WildBar</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yoon2ix.github.io/2020/08/14/Java-Basic-Generic/" data-id="ckdt0mamn0008foi8gyjgdxkq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/basic/" rel="tag">basic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/14/Java-Basic-Wrapper-Class/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java Basic - Wrapper Class
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/11/Java-Basic-Enumeration/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java Basic - Enumeration</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/abstract/" rel="tag">abstract</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/basic/" rel="tag">basic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/class/" rel="tag">class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/enumeration/" rel="tag">enumeration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interface/" rel="tag">interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/polymorphism/" rel="tag">polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wrapper/" rel="tag">wrapper</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/abstract/" style="font-size: 10px;">abstract</a> <a href="/tags/basic/" style="font-size: 20px;">basic</a> <a href="/tags/class/" style="font-size: 15px;">class</a> <a href="/tags/enumeration/" style="font-size: 10px;">enumeration</a> <a href="/tags/generic/" style="font-size: 10px;">generic</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/interface/" style="font-size: 10px;">interface</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/polymorphism/" style="font-size: 10px;">polymorphism</a> <a href="/tags/wrapper/" style="font-size: 10px;">wrapper</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/14/Java-Basic-Wrapper-Class/">Java Basic - Wrapper Class</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/14/Java-Basic-Generic/">Java Basic - Generic</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/11/Java-Basic-Enumeration/">Java Basic - Enumeration</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/11/Java-Basic-Interface/">Java Basic - Interface</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/11/Java-Basic-Abstract-Class/">Java Basic - Abstract Class</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 YoonSeok Jeong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
